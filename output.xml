@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1 (Python 3.11.4 on win32)" generated="20230713 14:47:36.906" rpa="false" schemaversion="4">
+<suite id="s1" name="Post request" source="C:\Users\Vibhor\Documents\GitHub\Robot_Framework\Robot_API\Test_Cases\Post_request.robot">
+<test id="s1-t1" name="Creat_User" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230713 14:47:37.091" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230713 14:47:37.091" endtime="20230713 14:47:37.091"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>email=eve.holt@reqres.in</arg>
+<arg>password=pistol</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230713 14:47:37.091" level="INFO">${body} = {'email': 'eve.holt@reqres.in', 'password': 'pistol'}</msg>
+<status status="PASS" starttime="20230713 14:47:37.091" endtime="20230713 14:47:37.091"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230713 14:47:37.091" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230713 14:47:37.091" endtime="20230713 14:47:37.091"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>url=/api/register</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230713 14:47:37.678" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
+ body=email=eve.holt%40reqres.in&amp;password=pistol 
+ </msg>
+<msg timestamp="20230713 14:47:37.678" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Thu, 13 Jul 2023 09:17:38 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Content-Security-Policy': "default-src 'none'", 'X-Content-Type-Options': 'nosniff', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=4CXYMMlGfEog2mBOJ2tNIRkJTxazFWqbrgl%2FfYgG5Ufye0G7QVv3L4Gu6vtk%2BrEE0utFAmweeS%2BR9KOhTDYWgPHjYh7n9Gztd6AWt5IJS2qI5A3hYulrmGq%2F%2BQ%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '7e606f16fc028569-BOM'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;pre&gt;Bad Request&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg timestamp="20230713 14:47:37.678" level="INFO">C:\Users\Vibhor\AppData\Roaming\Python\Python311\site-packages\urllib3\connectionpool.py:1095: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230713 14:47:37.679" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://reqres.in/api/register</msg>
+<status status="FAIL" starttime="20230713 14:47:37.091" endtime="20230713 14:47:37.683"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20230713 14:47:37.684" endtime="20230713 14:47:37.684"/>
+</kw>
+<status status="FAIL" starttime="20230713 14:47:37.091" endtime="20230713 14:47:37.685">HTTPError: 400 Client Error: Bad Request for url: https://reqres.in/api/register</status>
+</test>
+<status status="FAIL" starttime="20230713 14:47:36.906" endtime="20230713 14:47:37.687"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Post request">Post request</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
